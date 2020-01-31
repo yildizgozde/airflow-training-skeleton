@@ -4,10 +4,6 @@ from airflow.hooks.postgres_hook import PostgresHook
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleCloudStorageOperator
 
-args = {
-    'owner': 'Airflow',
-    'start_date': airflow.utils.dates.days_ago(2),
-}
 
 
 with DAG(**args) as dag:
