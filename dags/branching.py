@@ -4,8 +4,8 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 import datetime
 
-def _get_weekday(execution_date, **context):
-    print(execution_date.strftime("%a"))
+def _get_weekday(execution_date, **context):
+    print(execution_date.strftime("%a"))
 
 args = {
     'owner': 'Airflow',
