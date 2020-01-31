@@ -18,5 +18,5 @@ days = ["Mon", "Tue", "Wed","Thu", "Fri", "Sat", "Sun"]
 with DAG(dag_id='branching', default_args=args,) as dag:
     branching = BranchPythonOperator(task_id="branching", python_callable=_get_weekday, provide_context=True,)
     for day in days:
-        branching >> DummyOperator(task_id="email" + weekdays_person_to_email.get(day), dag=dag)
+        branching >> DummyOperator(task_id="email" + weekdays_person_to_email.get(day))
     join = DummyOperator(task_id="final_task",trigger_rule="none_failed")
