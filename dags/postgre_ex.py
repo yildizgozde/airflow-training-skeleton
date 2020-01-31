@@ -10,11 +10,11 @@ args = {
 }
 with DAG(dag_id='postgres_example',default_args=args) as dag:
     pgsl_to_gcs = PostgresToGoogleCloudStorageOperator(
-        task_id="postgres_to_gcs",
-        sql="SELECT * FROM land_registry_price_paid_uk LIMIT 10",
-        bucket="iamtestingmyairflow",
-        filename="airflow_file",
-        postgres_conn_id="PostgresToGoogleCloudStorageOperator"
+        task_id='postgres_to_gcs',
+        sql='SELECT * FROM land_registry_price_paid_uk LIMIT 10',
+        bucket='iamtestingmyairflow',
+        filename='airflow_file',
+        postgres_conn_id='PostgresToGoogleCloudStorageOperator'
     )
 
 
