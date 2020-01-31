@@ -35,7 +35,7 @@ args = {
 }
 
 with DAG(dag_id='airflow_cron_ex', default_args=args,) as dag:
-    print_exec_date = BashOperator(task_id="demo_templating",bash_command="echo {{ execution_date }}",dag=dag,)
+    print_exec_date = BashOperator(task_id="demo_templating", bash_command="echo{{execution_date}}")
 
 
 #t1 >> t2 >> [t3, t4] >> t5
