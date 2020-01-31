@@ -1,4 +1,5 @@
 import airflow
+from airflow.models import DAG
 from airflow.hooks.postgres_hook import PostgresHook
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleCloudStorageOperator
