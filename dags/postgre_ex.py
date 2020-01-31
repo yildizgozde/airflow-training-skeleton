@@ -6,7 +6,7 @@ from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleC
 
 args = {
     'owner': 'Airflow',
-    'start_date': airflow.utils.dates.days_ago(2),
+    'start_date': airflow.utils.dates.days_ago(1),
 }
 with DAG(dag_id='postgres_example',default_args=args) as dag:
     pgsl_to_gcs = PostgresToGoogleCloudStorageOperator(
