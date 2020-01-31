@@ -26,6 +26,6 @@ with DAG(dag_id='branching', default_args=args,) as dag:
     branching = BranchPythonOperator(task_id="branching", python_callable=_get_weekday, provide_context=True,)
     final_task = DummyOperator(task_id="final_task",trigger_rule="none_failed")
     for person in persons.values():
-        branching >> DummyOperator(task_id='email_'+ person) >> final_task
+        branching >> DummyOperator(task_id='email_'+ person.lower()) >> final_task
 
 print_days >> branching
