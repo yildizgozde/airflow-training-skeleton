@@ -6,8 +6,6 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 import datetime
 
-
-schedule_interval=
 args = {
     'owner': 'Airflow',
     'start_date': airflow.utils.dates.days_ago(2),
