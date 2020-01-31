@@ -14,7 +14,8 @@ args = {
     'start_date': airflow.utils.dates.days_ago(2),
 }
 weekdays_person_to_email={0: "Bob", 1: "Joe", 2: "Alice", 3: "Joe", 4: "Alice", 5: "Bob", 6: "Alice"}
-days = ["Mon", "Tue", "Wed","Thu", "Fri", "Sat", "Sun"]
+days = ["Mon", "Tue", "Wed","Thu", "Fri", "Sat", "Sun"]
+
 with DAG(dag_id='branching', default_args=args,) as dag:
     branching = BranchPythonOperator(task_id="branching", python_callable=_get_weekday, provide_context=True,)
     for day in days:
