@@ -33,10 +33,10 @@ args = {
     'owner': 'Airflow',
     'start_date': airflow.utils.dates.days_ago(2),
 }
-def _print_exec_date(**context):
+def _print_exec_date(**context):
     print(context["execution_date"])
 
-with DAG(dag_id='airflow_cron_ex', default_args=args,) as dag:
+with DAG(dag_id='context_ex', default_args=args,) as dag:
     print_exec_date = PythonOperator(task_id="print_execution_date", python_callable=_print_exec_date, provide_context=True)
 
 
