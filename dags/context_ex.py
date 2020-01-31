@@ -46,7 +46,6 @@ with DAG(dag_id='context_ex', default_args=args,) as dag:
     the_end = DummyOperator(task_id="the_end")
 
 
-
 print_exec_date >> [wait_1,wait_5,wait_10] >> the_end
 
 
