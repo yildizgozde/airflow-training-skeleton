@@ -27,7 +27,7 @@ import airflow
 from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.dummy_operator import PythonOperator
+from airflow.operators.python_operator import PythonOperator
 
 import datetime
 
@@ -40,8 +40,13 @@ def _print_exec_date(**context):
 
 with DAG(dag_id='context_ex', default_args=args,) as dag:
     print_exec_date = PythonOperator(task_id="print_execution_date", python_callable=_print_exec_date, provide_context=True)
+    wait_1 = BashOperator(task_id="wait_1", bash_command="sleep 1")
+    wait_5 = BashOperator(task_id="wait_5", bash_command="sleep 5")
+    wait_10 = BashOperator(task_id="wait_10", bash_command="sleep 10")
+    the_end = DummyOperator(task_id="the_end")
 
 
-#t1 >> t2 >> [t3, t4] >> t5
+
+print_exec_date >> [wait_1,wait_5,wait_10] >> the_end
 
 
