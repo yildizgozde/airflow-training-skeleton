@@ -1,10 +1,21 @@
-from airflow.models import DAG
-from airflow.operators.dummy_operator import DummyOperator
+import airflow
+from airflow.models import DAG
+from airflow.operators.bash_operator import BashOperator
+from airflow.operators.dummy_operator import DummyOperator
+
+
+args = {
+    'owner': 'Airflow',
+    'start_date': airflow.utils.dates.days_ago(2),
+}
 
 dag = DAG(
-    'airflow_first_ex',
-    default_args=default_args,
-    schedule_interval=None)
+    dag_id='airflow_first_ex',
+    default_args=args,
+  schedule_interval=None)
+
+
+
 
 
 t1 = DummyOperator(task_id="task1", dag=dag)
