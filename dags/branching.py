@@ -21,3 +21,5 @@ with DAG(dag_id='branching', default_args=args,) as dag:
     for day in days:
         branching >> DummyOperator(task_id="email" + weekdays_person_to_email.get(days.index(day)))
     join = DummyOperator(task_id="final_task",trigger_rule="none_failed")
+
+branching >> join
