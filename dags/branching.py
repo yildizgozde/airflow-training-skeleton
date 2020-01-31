@@ -24,7 +24,7 @@ with DAG(dag_id='branching', default_args=args,) as dag:
     print_days = PythonOperator(task_id="print_weekdays", python_callable=_print_weekday, provide_context=True,)
     branching = BranchPythonOperator(task_id="branching", python_callable=_get_weekday, provide_context=True,)
     for day in days:
-        branching >> DummyOperator(task_id="email" + weekdays_person_to_email.get(days.index(day)))
-    join = DummyOperator(task_id="final_task",trigger_rule="none_failed")
+        branching >> DummyOperator(task_id="email_" + weekdays_person_to_email.get(days.index(day)))
+    final_task = DummyOperator(task_id="final_task",trigger_rule="none_failed")
 
-print_days >> branching >> join
+print_days >> branching >> final_task
