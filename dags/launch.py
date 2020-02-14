@@ -8,8 +8,8 @@ from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.http_operator import SimpleHttpOperator
 from airflow.hooks.base_hook import BaseHook
-
-
+from airflow.operators.bash_operator import BaseOperator
+from airflow.utils.decorators import apply_defaults
 
 
 args = {"owner": "Gozde", "start_date": airflow.utils.dates.days_ago(1)}
@@ -22,6 +22,7 @@ class HttpHook(BaseHook):
     def get_results(self):
         url=f'https://launchlibrary.net/1.4/launch?startdate={self.t1}&enddate={self.t2}'
         req = requests.get(url).json()
+        print(req)
         return req
         
 
@@ -33,7 +34,7 @@ class LaunchLibraryOperator(BaseOperator):
         self.t1 = t1
         self.t2 = t2
     def execute(self, context):
-        hook = HttpHook(self.t1, self,t2)
+        hook = HttpHook(self.t1, self.t2)
         with open(posixpath.join(self.result_path, "launches.json"), "w") as f:
             f.write(hook.get_results())
 
