@@ -56,5 +56,5 @@ download_rocket_launches = LaunchLibraryOperator(
     t2 = "2015-05-05",
     dag=dag)
 
-pytest.helpers.run_task(task=is_it_light, dag=test_dag)
+#pytest.helpers.run_task(task=is_it_light, dag=test_dag)
 
