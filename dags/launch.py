@@ -31,15 +31,15 @@ class LaunchLibraryOperator(BaseOperator):
     @apply_defaults
     def __init__(self,t1,t2,*args,**kwargs):
         super(LaunchLibraryOperator, self).__init__(*args, **kwargs)
-        self.result_path = "/Users/gyildiz/Desktop/3stweek/airflow-training-skeleton"  
+        #self.result_path = "/Users/gyildiz/Desktop/3stweek/airflow-training-skeleton"  
         self.t1 = t1
         self.t2 = t2
 
     def execute(self, context):
         hook = HttpHook(self.t1, self.t2)
-        with open(posixpath.join(self.result_path, "launches.json"), "w") as f:
+        with open("launches.json", "w") as f:
             f.write(hook.get_results())
-            GoogleCloudStorageHook(google_cloud_storage_conn_id='google_conn_default').upload(bucket="launchbucket",object=f,filename="json_file")
+        GoogleCloudStorageHook(google_cloud_storage_conn_id='google_conn_default').upload(bucket="launchbucket",object="launches.json",filename="json_file")
         
 
 
