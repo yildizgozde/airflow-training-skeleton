@@ -10,6 +10,7 @@ from airflow.operators.http_operator import SimpleHttpOperator
 from airflow.hooks.base_hook import BaseHook
 from airflow.operators.bash_operator import BaseOperator
 from airflow.utils.decorators import apply_defaults
+from airflow.contrib.hooks import GoogleCloudStorageHook
 
 
 args = {"owner": "Gozde", "start_date": airflow.utils.dates.days_ago(1)}
