@@ -14,8 +14,8 @@ from airflow.contrib.hooks import GoogleCloudStorageHook
 #import pytest
 
 
-def test_launcher_hook(test_dag,mocker):
-    mocker.patch.object(HttpHook,"get_connection", return_value={"test":"gozde"})
+# def test_launcher_hook(test_dag,mocker):
+#     mocker.patch.object(HttpHook,"get_connection", return_value={"test":"gozde"})
 
 
 
