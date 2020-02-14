@@ -15,7 +15,10 @@ dag = DAG(dag_id="fetch_data_launchers", default_args=args, schedule_interval="0
 
 class HttpHook(BaseHook):
     def __init__(self, t1, t2):
-        self.method = method
+        self.t1 = t1
+        self.t2 = t2
+
+    def get_results(self)
         url=f'https://launchlibrary.net/1.4/launch?startdate={self.t1}&enddate={self.t2}'
         req = requests.get(url).json()
         return req
@@ -31,7 +34,7 @@ class LaunchLibraryOperator(BaseOperator):
     def execute(self, context):
         hook = HttpHook(self.t1, self,t2)
         with open(posixpath.join(self.result_path, "launches.json"), "w") as f:
-            f.write(hook)
+            f.write(hook.get_results())
 
 
 download_rocket_launches = LaunchLibraryOperator(
