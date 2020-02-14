@@ -11,12 +11,12 @@ from airflow.hooks.base_hook import BaseHook
 from airflow.operators.bash_operator import BaseOperator
 from airflow.utils.decorators import apply_defaults
 from airflow.contrib.hooks import GoogleCloudStorageHook
-import pytest
+#import pytest
 
 
 def test_launcher_hook(test_dag,mocker):
     mocker.patch.object(HttpHook,"get_connection", return_value={"test":"gozde"})
-    
+
 
 
 args = {"owner": "Gozde", "start_date": airflow.utils.dates.days_ago(1)}
