@@ -39,7 +39,7 @@ class LaunchLibraryOperator(BaseOperator):
         hook = HttpHook(self.t1, self.t2)
         with open(posixpath.join(self.result_path, "launches.json"), "w") as f:
             f.write(hook.get_results())
-             GoogleCloudStorageHook(google_cloud_storage_conn_id='google_conn_default').upload(bucket="launchbucket",object=f,filename="json_file")
+            GoogleCloudStorageHook(google_cloud_storage_conn_id='google_conn_default').upload(bucket="launchbucket",object=f,filename="json_file")
         
 
 
