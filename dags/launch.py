@@ -40,9 +40,8 @@ download_rocket_launches = LaunchLibraryOperator(
     task_id="download_rocket_launches", 
     #params={"startdate":"{{ ds }}", "enddate": "{{ tomorrow_ds }}"}, 
     t1 = "2015-03-20",
-    t2 = "2015-05-05"
-    #result_key="/data/rocket_launches/ds={{ds}}/launches.json",
-    dag=dag}
+    t2 = "2015-05-05",
+    dag=dag)
 
 
 
