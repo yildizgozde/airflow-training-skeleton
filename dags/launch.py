@@ -17,8 +17,7 @@ class HttpHook(BaseHook):
     def __init__(self, t1, t2):
         self.t1 = t1
         self.t2 = t2
-
-    def get_results(self)
+    def get_results(self):
         url=f'https://launchlibrary.net/1.4/launch?startdate={self.t1}&enddate={self.t2}'
         req = requests.get(url).json()
         return req
