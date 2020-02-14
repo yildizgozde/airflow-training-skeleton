@@ -7,6 +7,8 @@ import requests
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.http_operator import SimpleHttpOperator
+from airflow.hooks.base_hook import BaseHook
+
 
 
 
